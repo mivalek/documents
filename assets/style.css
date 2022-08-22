@@ -1,0 +1,65 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 25px;
+}
+
+code {
+    font-family: 'Roboto Mono', monospace;
+}
+
+#letter-head-container {
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    display: flex;
+    -webkit-box-pack: end;
+    flex-flow: row-reverse;
+}
+
+#letter-head {
+	margin-bottom: 2em;
+	width: max-content;
+}
+
+#address {
+	margin: .4em 0 0 0;
+}
+
+#address > p {
+    margin: 0
+}
+
+#phone {
+    margin-bottom: 1em;
+}
+
+#addressee {
+	margin-bottom: 1em;
+}
+
+#subject {
+	font-weight: bold;
+    margin-bottom: 2em;
+}
+
+#content {
+    margin-bottom: 2em;
+}
+
+#signature {
+	width: 200px;
+	text-align: center;
+}
+
+#signature > img {
+	width: inherit;
+    margin-top: 1em;
+}
+
+#signature > p {
+    margin: 0;
+    margin-top: -.7em;
+}
+
+h3 {
+    font-size: 1em
+}

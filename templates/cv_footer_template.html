@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="assets/font-awesome-6.0.0/css/font-awesome-6.0.0.css" rel="stylesheet">
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            /* font-style: italic; */
+            color: #333;
+            font-size: 12px;
+            font-weight: 300;
+            padding: 0;
+            margin: -1px;
+        }
+
+        #footer {
+            text-align: center;
+        }
+
+        #contact>*,
+        #social>* {
+            display: inline-block;
+        }
+
+        .fa-solid,
+        .fa-brands {
+            margin-right: 5px;
+            color: $if(colour)$$colour$$else$#4b91c4$endif$;
+        }
+
+        .sep {
+            /* height: 5px;
+            width: 5px;
+            background-color: #888;
+            border-radius: 50%; */
+            margin: 0 5px;
+        }
+
+        a {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+
+        a:hover {
+            color: $if(colour)$$colour$$else$#4b91c4$endif$;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="footer">
+        <div id="address">$address.office$ | $address.institution$ | $address.address$ | $address.city$
+            $address.post_code$
+            | $address.country$</div>
+        <div id="contact">
+            <div id="phone"><i class="fa-solid fa-mobile-screen-button"></i></i>$phone$</div>
+            <div class="sep">|</div>
+            <div id="email"><i class="fa-solid fa-envelope"></i>$email$</div>
+            <div class="sep">|</div>
+            <div id="website"><i class="fa-solid fa-globe"></i>$www$</div>
+        </div>
+        <div id="social">
+            <div id="twitter"><i class="fa-brands fa-twitter"></i><a href="https://twitter.com/$twitter$">$twitter$</a>
+            </div>
+            <div class="sep">|</div>
+            <div id="github"><i class="fa-brands fa-github"></i><a href="https://github.com/$github$">$github$</a></div>
+        </div>
+    </div>
+</body>
+
+</html>

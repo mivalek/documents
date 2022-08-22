@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="author" content="$author$" />
+    <title>$title$</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="assets/fonts/fonts.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+    </style>
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div id="letter-head-container">
+        <div id="letter-head">
+            <div id="from">$if(author)$$author.title$ $author.first$ $author.last$ $else$Dr Milan Valášek$endif$</div>
+            <div id="role">$if(role)$$role$$else$Lecturer$endif$</div>
+            <div id="address">$if(address)$
+                <p>$address.office$</p>
+                <p>$address.institution$</p>
+                <p>$address.address$</p>
+                <p>$address.city$ $address.post_code$</p>
+                <p>$address.country$</p>
+                $else$
+                <p>Pevensey I, Room 2C4</p>
+                <p>School of Psychology</p>
+                <p>University of Sussex</p>
+                <p>Brighton BN1 9QH</p>
+                <p>United Kingdom</p>
+                $endif$
+            </div>
+            <div id="email">$if(email)$<a href="mailto:$email$">$email$</a>$else$<a
+                    href="mailto:M.Valasek@sussex.ac.uk">M.Valasek@sussex.ac.uk</a>$endif$</div>
+            <div id="phone">Phone: $if(phone)$$phone$$else$+44 (0)1273 877698$endif$</div>
+            <div id="date">$if(date)$$date$$else$$auto_date$$endif$</div>
+        </div>
+    </div>
+    <div id="addressee">
+        $if(to)$
+        Dear $to$,
+        $else$
+        To Whom It May Concern,
+        $endif$
+    </div>
+    $if(subject)$
+    <div id="subject">RE: $subject$</div>
+    $endif$
+    <div id="content">
+        $body$
+    </div>
+    <p>Yours sincerely,</p>
+    <div id="signature">
+        <img src="assets/$signature$"></img>
+        <p>$if(author)$$author.title$ $author.first$ $author.last$$else$Dr Milan Valášek$endif$</p>
+    </div>
+</body>
+
+</html>

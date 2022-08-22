@@ -1,0 +1,155 @@
+---
+title: "Curriculum Vit&aelig;"
+date: "`r format(Sys.time(), '%B %Y')`"
+bibliography: data/pub.bib
+nocite: '@*'
+csl: assets/apa-6th-edition.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+# library(scholar)
+data <- jsonlite::fromJSON("data/cv.json")
+# pub <- scholar::get_publications("4mqz8AkAAAAJ")
+span <- function(x, class) {
+  paste0('<span class="', class, '">', x, '</span>')
+}
+```
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Education
+:::
+
+```{r, results='asis'}
+edu <- data$education |>
+  dplyr::mutate(
+    year = paste(start, end, sep = "–"),
+    entry = paste(
+      span(degree, "what"),
+      span(institution, "inst"),
+      span(where, "where"),
+      sep=", "
+      )
+    )
+for (i in 1:nrow(edu)) {
+  cat(paste0(":::{.cv-item}\n:::{.cv-item-name}\n", edu$year[i], "\n:::\n:::{.cv-item-content}\n"))
+cat(edu$entry[[i]], sep = "\n\n")
+cat(":::\n:::\n\n")
+}
+```
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Relevant work experience
+:::
+
+```{r, results='asis'}
+work <- data$work |>
+  # dplyr::filter(grepl("all|data", type, perl = T)) |>
+  # dplyr::mutate(year = paste(gsub("[A-z ]", "", start), gsub(".*?(\\d+)", "\\1", end), sep = "–"))
+  dplyr::mutate(year = paste(gsub("([A-z]{3}).*?(\\d{4})", "\\1 \\2", start), gsub("([A-z]{3}).*?(\\d{4})", "\\1 \\2", end), sep = "–"),
+    entry = paste(
+      span(what, "what"),
+      span(institution, "inst"),
+      span(where, "where"),
+      sep=", "
+      )
+    )
+for (i in 1:nrow(work)) {
+  cat(paste0(":::{.cv-item}\n:::{.cv-item-name}\n", work$year[i], "\n:::\n:::{.cv-item-content}\n"))
+cat(work$entry[[i]], sep = "\n\n")
+cat(":::\n:::\n\n")
+}
+```
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Professional qualification
+:::
+
+```{r, results='asis'}
+qual <- data$qualifications |>
+  dplyr::mutate(
+    entry = paste(
+      span(what, "what"),
+      span(where, "inst"),
+      sep=", "
+      )
+    )
+for (i in 1:nrow(qual)) {
+  cat(paste0(":::{.cv-item}\n:::{.cv-item-name}\n", qual$when[i], "\n:::\n:::{.cv-item-content}\n"))
+cat(qual$entry[[i]], sep = "\n\n")
+cat(":::\n:::\n\n")
+}
+```
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Grants and awards
+:::
+
+```{r, results='asis'}
+awards <- data$grants_awards |>
+  dplyr::mutate(
+    entry = gsub(", with NA", "",
+      paste(
+        span(what, "what"),
+        paste("with", with), 
+        desc,
+        sep=", "
+      )
+    )
+  )
+for (i in 1:nrow(awards)) {
+  cat(paste0(":::{.cv-item}\n:::{.cv-item-name}\n", awards$when[i], "\n:::\n:::{.cv-item-content}\n"))
+cat(awards$entry[[i]], sep = "\n\n")
+cat(":::\n:::\n\n")
+}
+```
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Skills
+:::
+
+```{r, results='asis'}
+for (i in names(data$skills)) {
+  cat(paste0(":::{.cv-item}\n:::{.cv-item-name}\n", stringr::str_to_sentence(i), "\n:::\n:::{.cv-item-content}\n"))
+cat(paste0("- ", data$skills[[i]]), sep = "\n")
+cat(":::\n:::\n\n")
+}
+```
+
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Output
+:::
+
+```{r, results='asis'}
+cat(paste0(":::{.cv-item}\n:::{.cv-item-name}\n\n:::\n:::{.cv-item-content}\n"))
+cat(paste0("- ", data$output), sep = "\n")
+cat(":::\n:::\n\n")
+```
+
+
+:::{.section-wrapper}
+:::{.line}
+:::
+# Publications
+:::
+
+# References

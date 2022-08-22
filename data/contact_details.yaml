@@ -1,0 +1,20 @@
+---
+name:
+  first: Milan
+  last: Valášek
+  title: Dr
+role: Lecturer in Psychology
+address:
+  dpt: "School of Psychology"
+  institution: "University of Sussex"
+  office: "Room 2C4"
+  address: "Pevensey I"
+  city: "Brighton"
+  post_code: "BN1 9QH"
+  country: "United Kingdom"
+www: https://mival.netlify.app
+email: "M.Valasek@sussex.ac.uk"
+phone: "+44 (0)1273 877698"
+twitter: mivalek
+github: mivalek
+---
